@@ -1,0 +1,56 @@
+﻿<Page x:Class="MenuBarDemo.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:MenuBarDemo"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      RequestedTheme="Light"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <MenuBar VerticalAlignment="Top">
+            <MenuBarItem Title="File"
+                         AccessKey="F">
+                <MenuFlyoutItem Text="Open"
+                                Icon="OpenFile"
+                                Click="MenuFlyoutOpen_Click">
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="O"
+                                             Modifiers="Control" />
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="Save"
+                                Icon="Save"
+                                Command="{x:Bind SaveCommand}">
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="S"
+                                             Modifiers="Control" />
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
+                <MenuFlyoutSubItem Text="Demo">
+                    <MenuFlyoutItem Text="A"
+                                    Command="{x:Bind DemoCommand}"
+                                    CommandParameter="{Binding Text, 
+                                        RelativeSource={RelativeSource Self}, 
+                                        Mode=OneTime}" />
+                    <MenuFlyoutItem Text="B"
+                                    Command="{x:Bind DemoCommand}"
+                                    CommandParameter="{Binding Text, 
+                                        RelativeSource={RelativeSource Self}, 
+                                        Mode=OneTime}" />
+                    <MenuFlyoutItem Text="C"
+                                    Command="{x:Bind DemoCommand}"
+                                    CommandParameter="{Binding Text, 
+                                        RelativeSource={RelativeSource Self}, 
+                                        Mode=OneTime}" />
+                </MenuFlyoutSubItem>
+            </MenuBarItem>
+            <MenuBarItem Title="Help"
+                         AccessKey="H">
+                <MenuFlyoutItem Text="About"
+                                Click="MenuFlyoutItemAbout_Click" />
+            </MenuBarItem>
+        </MenuBar>
+    </Grid>
+</Page>
